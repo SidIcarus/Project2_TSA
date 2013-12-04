@@ -20,16 +20,16 @@ object Driver extends App{
   }
     
     
-    //val jail = actorOf(new Jail()).start()
+    val jail = actorOf(new Jail()).start()
     
     val lineList = new Array[ActorRef](numLines)
     val i = 0
     
     for ( i <- 0 to numLines -1){
-      //lineList(i) = actorOf(new Line())
+      lineList(i) = actorOf(new Line())
       lineList(i).start()
     }
-    //val securitySystem = actorOf(new securitySystem()).start
+    val securitySystem = actorOf(new securitySystem(List.fromArray(lineList))).start
     
   }
   
