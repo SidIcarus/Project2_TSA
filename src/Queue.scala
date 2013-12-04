@@ -8,14 +8,14 @@ import scala.collection.immutable.Queue
  **/
 class Queue() extends Actor{
   
-  //Holds the 
   var passengerList = new Queue[Passenger]()
   var baggageQueue = new Queue[Passenger]()
   var bodyQueue = new Queue[Passenger]()
   var wait : Boolean = true
 
-  def receive() = {
-
+class Queue() extends Actor{
+  
+  def receive = {
   	case sendPass : SendPassenger => {
       bodyQueue += sendPassenger.passenger
       baggageQueue += sendPassenger.passenger
