@@ -29,9 +29,13 @@ object Driver extends App{
       lineList(i) = actorOf(new Line())
       lineList(i).start()
     }
-    val securitySystem = actorOf(new securitySystem(List.fromArray(lineList))).start
+    
+    val documentChecker = actorOf(new documentChecker(List.fromArray(lineList))).start
     
   }
+  
+  registry.shutdownAll()
+  println("The system is turning off")
   
 
 }

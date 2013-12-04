@@ -16,7 +16,7 @@ class securitySystem(val lineList : List[ActorRef]) extends Actor{
 
   def receive = {
     case passenger : sendPassenger => {
-      println("securitySystem receives a sendPassenger message")
+      println("documentChecker receives a sendPassenger message")
       
       if (checkDocument()){
         addToLine(passenger)
@@ -60,6 +60,8 @@ class securitySystem(val lineList : List[ActorRef]) extends Actor{
 	  
 	  
   }
+  
+  
   
 
 }
