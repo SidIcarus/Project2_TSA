@@ -11,11 +11,9 @@ class securitySystem() /*extends Actor*/{
   /**
    * Gets a passenger to have the document checked for
    */
-  
   /*
-  def getPassenger = {
+  def getPassenger()= {
     case passenger : sendPassenger => {
-      
       if (checkDocument()){
         //send the passenger to a line
       }
@@ -23,13 +21,14 @@ class securitySystem() /*extends Actor*/{
         println("Passenger does not have the proper documenation and is turned away")
       }
     }
-  }
-*/
+  }*/
+
   /**
    * Checks the passengers documents. Has a 20% chance of failing
    * 
    * Returns true or false depending on whether it passed or not
    */
+  
   def checkDocument() : Boolean = {
     
     val n = new scala.util.Random
@@ -37,6 +36,15 @@ class securitySystem() /*extends Actor*/{
     if (n.nextDouble() <= 0.2) 
     	false
     else true
+    
+  }
+  
+  
+  /**
+   * Adds passenger to the line
+   */
+  
+  def addToLine = {
     
   }
 }
