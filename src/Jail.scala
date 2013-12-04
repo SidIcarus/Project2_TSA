@@ -1,3 +1,5 @@
+package src
+
 import akka.actor.Actor
 import java.util.ArrayList
 import akka.actor.ActorRef

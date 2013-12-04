@@ -11,7 +11,7 @@ class lineQueue(val bodyScanner : ActorRef, val baggageScanner : ActorRef) exten
   
   var baggageQueue = new Queue[Passenger]()
   var bodyQueue = new Queue[Passenger]()
-  var wait : Boolean = true
+  var passengerWait : Boolean = true
   
   def receive = {
   	case sendPass : sendPassenger => {
@@ -25,11 +25,11 @@ class lineQueue(val bodyScanner : ActorRef, val baggageScanner : ActorRef) exten
       baggageScanner ! new sendBaggage(currentPassenger.baggage, currentPassenger)
       printSend("sendBaggage", "BaggageScanner")
       
-      if(!wait) {
+      if(!passengerWait) {
         var currentPassenger = bodyQueue.dequeue()
         bodyScanner ! new sendPassenger(currentPassenger)
         printSend("sendPassenger", "BodyScanner")
-        wait = true
+        passengerWait = true
       }
     }
     
@@ -42,7 +42,7 @@ class lineQueue(val bodyScanner : ActorRef, val baggageScanner : ActorRef) exten
         printSend("SendPassenger", "BodyScanner")
       }
       else {
-        wait = false
+        passengerWait = false
       }
     }
     

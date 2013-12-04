@@ -1,3 +1,5 @@
+package src
+
 /**
  * Checks each passenger to make sure they are not carrying anything illegal
  **/

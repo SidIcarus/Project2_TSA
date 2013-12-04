@@ -1,3 +1,5 @@
+package src
+
 /**
  * represents a baggage
  */
