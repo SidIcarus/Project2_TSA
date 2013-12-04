@@ -6,7 +6,7 @@ import akka.actor.ActorRef;
  * in a line
  **/
 
-class securitySystem(val lineList : List[ActorRef]) extends Actor{
+class documentChecker(val lineList : List[ActorRef]) extends Actor{
   
   /**
    * Gets a passenger to have the document checked for
