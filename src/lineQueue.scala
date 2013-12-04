@@ -1,28 +1,28 @@
+package src
+
 import akka.actor.Actor
 import akka.actor.ActorRef
-import scala.collection.mutable.ListBuffer
-import scala.collection.immutable.Queue
+import scala.collection.mutable.Queue
 
 /**
  * Holds a list of passengers waiting to go through the security station
  **/
-class lineQueue() extends Actor{
+class lineQueue(val bodyScanner : ActorRef, val baggageScanner : ActorRef) extends Actor{
   
-  var passengerList = new Queue[Passenger]()
   var baggageQueue = new Queue[Passenger]()
   var bodyQueue = new Queue[Passenger]()
   var wait : Boolean = true
   
   def receive = {
   	case sendPass : sendPassenger => {
-      bodyQueue += sendPassenger.passenger
-      baggageQueue += sendPassenger.passenger
+      bodyQueue += sendPass.passenger
+      baggageQueue += sendPass.passenger
       
       printReceive("sendPassenger")
       
-      var currentPassenger = baggageQueue.dequeue()
+      val currentPassenger = baggageQueue.dequeue()
             
-      baggageScanner ! new sendBaggage(currentPassenger.baggage, currPassenger)
+      baggageScanner ! new sendBaggage(currentPassenger.baggage, currentPassenger)
       printSend("sendBaggage", "BaggageScanner")
       
       if(!wait) {
@@ -38,7 +38,7 @@ class lineQueue() extends Actor{
       printReceive("PassengerRequest")
       
       if (bodyQueue.size > 0) {
-        bodyScanner ! new SendPassenger( bodyQueue.dequeue() )
+        bodyScanner ! new sendPassenger( bodyQueue.dequeue() )
         printSend("SendPassenger", "BodyScanner")
       }
       else {
