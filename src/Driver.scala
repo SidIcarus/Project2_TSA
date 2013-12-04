@@ -1,12 +1,13 @@
+package src
 import akka.actor.ActorRef
 import akka.actor.Actor._
 import akka.actor.UntypedActor
 /**
  * This class is what will setup and run the program
  */
-object Driver extends App{
+object Driver{
   
-  override def main(args: Array[String]){
+	def main(args: Array[String]){
   
     //sets up the number of lines and number of passengers with defaults
     var numLines = 5
