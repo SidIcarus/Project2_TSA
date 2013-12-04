@@ -10,7 +10,7 @@ import akka.actor.ActorRef
  * @param lineNum Line the station is associated with
  * @param jail Jail to send passengers to
  */
-class securityStation(val lineNum : Int, val jail : ActorRef) extends Actor {
+class securityStation(val jail : ActorRef) extends Actor {
   
   /**
    * @override

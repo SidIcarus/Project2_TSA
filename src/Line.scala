@@ -2,7 +2,7 @@ package src
 
 import akka.actor.Actor
 import akka.actor.ActorRef
-import java.util.ArrayList
+import scala.collection.mutable.Queue
 
 /**
  * Line holds a queue, security station, and scanners(line creates these objects)
@@ -11,9 +11,13 @@ import java.util.ArrayList
  **/
 
 class Line(val num: Int) extends Actor{
-
-  def receive = {
-    case passenger : sendPassenger =>{}
-    
-  }
+	val securityStation = new securityStation()
+	val bodyScanner = new bodyScanner(securityStation)
+	val bagScanner = new baggageScanner(securityStation)
+	val lineQueue = new lineQueue(bodyScanner, bagScanner)
+	
+	def receive = {
+		case passenger : sendPassenger =>{}
+	    
+	}
 }
