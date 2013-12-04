@@ -1,28 +1,34 @@
-//import akka.actor.Actor;
-//import akka.actor.ActorRef;
+import akka.actor.Actor;
+import akka.actor.ActorRef;
 
 /**
  * The security system checks the documents of all the passengers and inserts the passenger
  * in a line
  **/
 
-class securitySystem() /*extends Actor*/{
+class securitySystem(val lineList : List[ActorRef]) extends Actor{
   
   /**
    * Gets a passenger to have the document checked for
    */
-  /*
-  def getPassenger()= {
+ 
+ 
+
+  def receive = {
     case passenger : sendPassenger => {
+      println("securitySystem receives a sendPassenger message")
+      
       if (checkDocument()){
-        //send the passenger to a line
+        addToLine(passenger)
       }
       else{
-        println("Passenger does not have the proper documenation and is turned away")
+        println("Passenger does not have the proper documentation and is turned away")
       }
     }
-  }*/
+  }
 
+
+  
   /**
    * Checks the passengers documents. Has a 20% chance of failing
    * 
@@ -44,7 +50,16 @@ class securitySystem() /*extends Actor*/{
    * Adds passenger to the line
    */
   
-  def addToLine = {
+  def addToLine(passenger : sendPassenger) = {
+	  var lineNum = 0
+	  
+	  lineList(lineNum) ! new sendPassenger(passenger.passenger)
+	  println("Sending passenger to line" + lineNum + ".")
     
+	  lineNum+= 1
+	  
+	  
   }
+  
+
 }
