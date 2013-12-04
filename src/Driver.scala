@@ -11,6 +11,10 @@ object Driver extends App{
 		//sets up the number of lines and number of passengers with defaults
 		var numLines = 5
 		var numPass = 25
+		
+		//counter for for loops
+		val i = 0
+		
     
 		//checks for command line arguments and overwrites the above variables
 		if (args != null && args.size == 2){
@@ -18,17 +22,25 @@ object Driver extends App{
 			numPass = args(1).toInt
 		}
 		
+		//starts the jail actor
 		val jail = actorOf(new Jail(numLines)).start()
 		
+		//list of all the lines
 		val lineList = new Array[ActorRef](numLines)
-		val i = 0
 		
+		//adds a line to the list and starts it
 		for ( i <- 0 to numLines -1){
 			lineList(i) = actorOf(new Line(i))
 			lineList(i).start()
 		}
 		
+		//starts the documentChecker
 		val documentChecker = actorOf(new documentChecker(List.fromArray(lineList))).start
+		
+		//sends passenger through the document Checker
+		for (i <- 1 to numPass){
+		  documentChecker ! new sendPassenger(new Passenger(new Baggage()))
+		}
 	}
   
 	registry.shutdownAll()
