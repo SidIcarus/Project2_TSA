@@ -1,19 +1,23 @@
 package src
-import akka.actor.Actor
+
 import akka.actor.ActorRef
 
 /**
  * Checks the bags of each passenger and makes sure it is clear.
  **/
 
-class baggageScanner(val securityStation : ActorRef) extends Scanner {
+class baggageScanner(val securityStation : ActorRef) extends Scanner(securityStation) {
 
   def receive() = {
     case sendBag : sendBaggage => {
       
-      val passedInspection : Boolean = true
+      val passedInspection : Boolean = randomInspection()
       
-      securityStation ! new Report(sendBaggage.passenger, passedInspection)
+      securityStation ! new Report(sendBag.passenger, passedInspection)
+    }
+    
+    case start : Start => {
+      //this will start the baggage scanner
     }
     
   }
