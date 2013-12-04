@@ -6,17 +6,15 @@ import scala.collection.immutable.Queue
 /**
  * Holds a list of passengers waiting to go through the security station
  **/
-class Queue() extends Actor{
+class lineQueue() extends Actor{
   
   var passengerList = new Queue[Passenger]()
   var baggageQueue = new Queue[Passenger]()
   var bodyQueue = new Queue[Passenger]()
   var wait : Boolean = true
-
-class Queue() extends Actor{
   
   def receive = {
-  	case sendPass : SendPassenger => {
+  	case sendPass : sendPassenger => {
       bodyQueue += sendPassenger.passenger
       baggageQueue += sendPassenger.passenger
       
