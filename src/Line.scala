@@ -13,9 +13,12 @@ import scala.collection.mutable.Queue
 
 class Line(val num: Int, val jail: ActorRef) extends Actor{
 	val securityStation = actorOf(new securityStation(jail)).start()
+	
 	val bodyScanner = actorOf(new bodyScanner(securityStation)).start()
+	
 	val baggageScanner = actorOf(new baggageScanner(securityStation)).start()
-	val lineQueue = new lineQueue(bodyScanner, baggageScanner)
+	
+	val lineQueue = actorOf(new lineQueue(bodyScanner, baggageScanner))
 	
 	
 	
