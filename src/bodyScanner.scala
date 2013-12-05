@@ -16,12 +16,6 @@ class bodyScanner(private val securityStation : ActorRef) extends Scanner(securi
       println("BodyScanner sends a report to SecurityStation")
       println("")
     }
-    
-    case start : Start => {
-      println("BodyScanner is starting.")
-      println("")
-    }
-    
   }
   
 }
