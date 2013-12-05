@@ -16,12 +16,12 @@ class securityStation(val jail : ActorRef) extends Actor {
    * Upon receiving a report, it checks whether the inspection passed or not. If it didn't, it sends that passenger to jail.
    */
   def receive = {
-  	case report : Report=>{
-  	  if (!report.inspection){
-  	     println("Passenger " + report.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
-  	     jail ! new sendPassenger(report.passenger)
+  	case reportPassenger : reportPassenger=>{
+  	  if (!reportPassenger.inspection){
+  	     println("Passenger " + reportPassenger.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
+  	     jail ! new sendPassenger(reportPassenger.passenger)
   	  }else
-  	    println("Passenger " + report.passenger.num + " goes to heaven")
+  	    println("Passenger " + reportPassenger.passenger.num + " goes to heaven")
   	}
   }
 }

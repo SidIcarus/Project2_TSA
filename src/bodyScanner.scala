@@ -11,7 +11,7 @@ class bodyScanner(private val securityStation : ActorRef) extends Scanner(securi
   def receive() = {
     case sendPass : sendPassenger => {
       val passedInspection : Boolean = randomInspection()
-      securityStation ! new Report(sendPass.passenger, passedInspection)
+      securityStation ! new reportPassenger(sendPass.passenger, passedInspection)
       println("BodyScanner sends a report to SecurityStation\n")
       
       self.channel ! new PassengerRequest()

@@ -9,7 +9,7 @@ class baggageScanner(private val securityStation : ActorRef) extends Scanner(sec
   def receive() = {
     case sendBag : sendBaggage => {
       val passedInspection : Boolean = randomInspection()
-      securityStation ! new Report(sendBag.passenger, passedInspection)
+      securityStation ! new reportBaggage(sendBag.passenger, passedInspection)
       println("BaggageScanner sends a report to SecurityStation\n")
       
       self.channel ! new PassengerRequest()
