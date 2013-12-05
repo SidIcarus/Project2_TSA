@@ -22,7 +22,7 @@ class securityStation(val jail : ActorRef) extends Actor {
   	     jail ! new sendPassenger(report.passenger)
   	     println("Passenger " + report.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
   	  }else
-  	    println("Passenger goes to heaven")
+  	    println("Passenger " + report.passenger.num + " goes to heaven")
   	}
   }
 }
