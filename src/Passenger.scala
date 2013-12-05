@@ -7,6 +7,7 @@ package src
  * @param baggage, a Baggage item attached to a each particular passenger 
  **/
 
-class Passenger(val baggage : Baggage){
+class Passenger(val baggage : Baggage, val num : Int){
+ 
 
 }

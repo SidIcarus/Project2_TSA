@@ -45,7 +45,7 @@ object Driver extends App{
 		
 		//sends passenger through the document Checker
 		for (i <- 1 to numPass){
-		  documentChecker ! new sendPassenger(new Passenger(new Baggage()))
+		  documentChecker ! new sendPassenger(new Passenger(new Baggage(), i))
 		}
 	}
   

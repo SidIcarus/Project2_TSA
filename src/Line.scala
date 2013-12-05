@@ -36,7 +36,7 @@ class Line(val num: Int, val jail: ActorRef) extends Actor{
 		  
 		  
 		  lineQueue ! new sendPassenger(passenger.passenger)
-		  println("Line " + num + " sends passenger to it's queue.\n")
+		  println("Line " + num + " sends passenger " + passenger.passenger.num + " to it's queue.\n")
 		  
 		}
 	    
