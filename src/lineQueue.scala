@@ -6,6 +6,9 @@ import scala.collection.mutable.Queue
 
 /**
  * Holds a list of passengers waiting to go through the security station
+ * 
+ * @param bodyScanner, a reference to the bodyScanner Actor
+ * @param baggageScanner, a reference to the baggageScanner Actor
  **/
 class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner : ActorRef) extends Actor{
   
