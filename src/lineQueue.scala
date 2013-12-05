@@ -40,7 +40,7 @@ class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner :
       
       printReceive("PassengerRequest")
       
-      println(bodyQueue.size + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")//////////////////////////////////////////////////
+      println(bodyQueue.size + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")//////////////////////////////////////////////////Delete after debugging
       if (bodyQueue.size > 0) {
         
         bodyScanner ! new sendPassenger( bodyQueue.dequeue() )
@@ -48,7 +48,7 @@ class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner :
       }
       
       else {
-        println("SIZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")/////////////////////////////////////////////
+        println("SIZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")/////////////////////////////////////////////Delete after debugging
         passengerWait = false
       }
     }
@@ -56,13 +56,11 @@ class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner :
   }
 
   def printSend(msgType : String, messageTo : String) {
-    println("Queue sends " + msgType + " message to " + messageTo + "." )
-    println("")
+    println("Queue sends " + msgType + " message to " + messageTo + ".\n" )
   }
   
   def printReceive(msgType : String) {
-    println("Queue receives " + msgType + " message.")
-    println("")
+    println("Queue receives " + msgType + " message.\n")
   }
   
 }

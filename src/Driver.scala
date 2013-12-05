@@ -41,8 +41,7 @@ object Driver extends App{
 		//starts the documentChecker
 		val documentChecker = actorOf(new documentChecker(List.fromArray(lineList))).start
 		println("Document Check is up and running.")
-		println("Passengers are now being sent through")
-		println("")
+		println("Passengers are now being sent through\n")
 		
 		//sends passenger through the document Checker
 		for (i <- 1 to numPass){
