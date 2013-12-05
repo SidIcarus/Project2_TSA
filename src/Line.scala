@@ -10,8 +10,8 @@ import scala.collection.mutable.Queue
  * 
  **/
 
-class Line(val num: Int) extends Actor{
-	val securityStation = new securityStation()
+class Line(val num: Int, val jail: ActorRef) extends Actor{
+	val securityStation = new securityStation(jail)
 	val bodyScanner = new bodyScanner(securityStation)
 	val bagScanner = new baggageScanner(securityStation)
 	val lineQueue = new lineQueue(bodyScanner, bagScanner)

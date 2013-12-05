@@ -30,7 +30,7 @@ object Driver extends App{
 		
 		//adds a line to the list and starts it
 		for ( i <- 0 to numLines -1){
-			lineList(i) = actorOf(new Line(i))
+			lineList(i) = actorOf(new Line(i, jail))
 			lineList(i).start()
 		}
 		
