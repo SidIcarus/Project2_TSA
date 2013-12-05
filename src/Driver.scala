@@ -23,6 +23,7 @@ object Driver extends App{
 		}
 		
 		println("System is starting up")
+		
 		//starts the jail actor
 		val jail = actorOf(new Jail(numLines)).start()
 		println("Jail is up and running.")

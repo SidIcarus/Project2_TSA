@@ -37,11 +37,15 @@ class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner :
       
       printReceive("PassengerRequest")
       
+      println(bodyQueue.size + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")//////////////////////////////////////////////////
       if (bodyQueue.size > 0) {
+        
         bodyScanner ! new sendPassenger( bodyQueue.dequeue() )
         printSend("SendPassenger", "BodyScanner")
       }
+      
       else {
+        println("SIZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")/////////////////////////////////////////////
         passengerWait = false
       }
     }

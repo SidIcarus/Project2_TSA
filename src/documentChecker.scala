@@ -6,6 +6,8 @@ import akka.actor.ActorRef;
 /**
  * The security system checks the documents of all the passengers and inserts the passenger
  * in a line
+ * 
+ * @param lineList, a list of all the Line Actor References
  **/
 
 class documentChecker(val lineList : List[ActorRef]) extends Actor{
@@ -15,7 +17,9 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
    */
  
  
-
+/**
+ * Upon receiving a passenger, it will check the document and then add it to the shortest line
+ */
   def receive = {
     case passenger : sendPassenger => {
       println("documentChecker receives a sendPassenger message from the Driver")
@@ -52,7 +56,7 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
   
   
   /**
-   * Adds passenger to the line
+   * Adds passenger to the shortest line
    */
   
   var lineNum = 0
