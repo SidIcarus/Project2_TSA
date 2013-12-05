@@ -15,7 +15,6 @@ object Driver extends App{
 		//counter for for loops
 		val i = 0
 		
-    
 		//checks for command line arguments and overwrites the above variables
 		if (args != null && args.size == 2){
 			numLines = args(0).toInt
@@ -44,12 +43,10 @@ object Driver extends App{
 		println("Passengers are now being sent through\n")
 		
 		//sends passenger through the document Checker
-		for (i <- 1 to numPass){
+		for (i <- 1 to numPass)
 		  documentChecker ! new sendPassenger(new Passenger(new Baggage(), i))
-		}
 	
-  
-	registry.shutdownAll()
-	println("The system is turning off")
+		registry.shutdownAll()
+		println("The system is turning off")
 	}
 }
