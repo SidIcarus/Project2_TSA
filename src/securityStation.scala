@@ -13,44 +13,16 @@ import akka.actor.ActorRef
 class securityStation(val jail : ActorRef) extends Actor {
   
   /**
-   * @override
-   */
-  
-  /**
    * Upon receiving a report, it checks whether the inspection passed or not. If it didn't, it sends that passenger to jail.
    */
   def receive = {
   	case report : Report=>{
-  	  
   	  if (!report.inspection){
   	    
   	     jail ! new sendPassenger(report.passenger)
   	     println("Passenger " + report.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
-  	  }else{
+  	  }else
   	    println("Passenger goes to heaven")
-  	  }
   	}
   }
-  
-  /**
-   * Prints output for a received message.
-   * 
-   * @param msgType The type of message received.
-   */
-  def printReceive(msgType : String) {
-    println("SecurityStation receives " + msgType + " message.\n")
-    
-  }
-  
-  /**
-   * Prints output for a sent message.
-   * 
-   * @param msgType The type of the outgoing message.
-   * @param recipient The recipient of the message.
-   */
-  def printSend(msgType : String, recipient : String) {
-    println("SecurityStation sends " + msgType + " message to " + recipient + ".\n")
-   
-  }
-  
 }
