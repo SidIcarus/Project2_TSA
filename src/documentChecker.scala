@@ -52,8 +52,9 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
    * Adds passenger to the line
    */
   
+  var lineNum = 0
   def addToLine(passenger : sendPassenger) = {
-	  var lineNum = 0
+	 
 	  
 	  lineList(lineNum) ! new sendPassenger(passenger.passenger)
 	  println("Sending passenger to line" + lineNum + ".")
