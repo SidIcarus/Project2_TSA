@@ -16,7 +16,7 @@ class securityStation(val jail : ActorRef) extends Actor {
    * @override
    */
   def receive = {
-  	case passenger : sendPassenger =>{}
+  	case report : Report=>{}
   }
   
   /**
