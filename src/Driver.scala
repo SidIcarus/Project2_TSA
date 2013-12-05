@@ -24,6 +24,7 @@ object Driver extends App{
 		
 		//starts the jail actor
 		val jail = actorOf(new Jail(numLines)).start()
+		println("Jail is up and running.")
 		
 		//list of all the lines
 		val lineList = new Array[ActorRef](numLines)
@@ -33,10 +34,12 @@ object Driver extends App{
 			lineList(i) = actorOf(new Line(i, jail))
 			lineList(i).start()
 		}
+		println("Lines are up and running.")
 		
 		//starts the documentChecker
 		val documentChecker = actorOf(new documentChecker(List.fromArray(lineList))).start
-		
+		println("Document Check is up and running.")
+		println("Passengers are now being sent through")
 		//sends passenger through the document Checker
 		for (i <- 1 to numPass){
 		  documentChecker ! new sendPassenger(new Passenger(new Baggage()))

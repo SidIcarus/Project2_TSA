@@ -22,6 +22,7 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
       
       if (checkDocument()){
         addToLine(passenger)
+        
       }
       else{
         println("Passenger does not have the proper documentation and is turned away")
@@ -57,9 +58,13 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
 	 
 	  
 	  lineList(lineNum) ! new sendPassenger(passenger.passenger)
-	  println("Sending passenger to line" + lineNum + ".")
+	  println("Sending passenger to line " + lineNum + ".")
     
 	  lineNum+= 1
+	  
+	  if (lineNum == lineList.size){
+	    lineNum = 0
+	  }
 	  
 	  
   }
