@@ -18,9 +18,8 @@ class securityStation(val jail : ActorRef) extends Actor {
   def receive = {
   	case report : Report=>{
   	  if (!report.inspection){
-  	    
-  	     jail ! new sendPassenger(report.passenger)
   	     println("Passenger " + report.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
+  	     jail ! new sendPassenger(report.passenger)
   	  }else
   	    println("Passenger " + report.passenger.num + " goes to heaven")
   	}
