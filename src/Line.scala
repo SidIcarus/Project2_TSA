@@ -23,7 +23,12 @@ class Line(val num: Int, val jail: ActorRef) extends Actor{
 	
 	
 	def receive = {
-		case passenger : sendPassenger =>{}
+		case passenger : sendPassenger =>{
+		  
+		  println("Line receives passenger from documentChecker.")
+		  
+		  lineQueue ! new sendPassenger(passenger.passenger)
+		}
 	    
 	}
 }
