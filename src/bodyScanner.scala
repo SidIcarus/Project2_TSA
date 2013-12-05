@@ -7,7 +7,7 @@ import akka.actor.ActorRef
  * Checks each passenger to make sure they are not carrying anything illegal
  **/
 
-class bodyScanner(val securityStation : ActorRef) extends Scanner(securityStation) {
+class bodyScanner(private val securityStation : ActorRef) extends Scanner(securityStation) {
 
   def receive() = {
     case sendPass : sendPassenger => {

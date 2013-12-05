@@ -7,7 +7,7 @@ import scala.collection.mutable.Queue
 /**
  * Holds a list of passengers waiting to go through the security station
  **/
-class lineQueue(val bodyScanner : ActorRef, val baggageScanner : ActorRef) extends Actor{
+class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner : ActorRef) extends Actor{
   
   var baggageQueue = new Queue[Passenger]()
   var bodyQueue = new Queue[Passenger]()

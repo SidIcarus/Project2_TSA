@@ -17,6 +17,8 @@ class Line(val num: Int, val jail: ActorRef) extends Actor{
 	val baggageScanner = actorOf(new baggageScanner(securityStation)).start()
 	val lineQueue = new lineQueue(bodyScanner, baggageScanner)
 	
+	
+	
 	def receive = {
 		case passenger : sendPassenger =>{}
 	    
