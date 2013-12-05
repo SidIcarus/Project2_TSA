@@ -14,7 +14,8 @@ class baggageScanner(private val securityStation : ActorRef) extends Scanner(sec
       securityStation ! new Report(sendBag.passenger, passedInspection)
       println("BaggageScanner sends a report to SecurityStation\n")
       
+      //self.channel ! new PassengerRequest()
+      //println("BaggageScanner requests more Bags\n")
     }    
   }
-  
 }
