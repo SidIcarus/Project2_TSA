@@ -6,15 +6,11 @@ import java.util.ArrayList
 /**
  * The jail holds all the passengers that fail the security check, 
  * and knows the number of stations feeding it passengers
- * 
  * @param numStations Number of stations contributing to the jail
  **/
-
 class Jail (val numStations: Int) extends Actor {
   
-  /**
-   * The prisoners being held
-   */
+  // Inmate holder
   private var inmates = new ArrayList[Passenger]()
   
   /**
@@ -23,8 +19,7 @@ class Jail (val numStations: Int) extends Actor {
   def receive = {
     case passenger : sendPassenger => {
       inmates.add(passenger.passenger)
-      println("Passenger is incarcerated and has entered the jail.")
-      println("")
+      println("Passenger " +passenger.passenger.num+ " is incarcerated and has entered the jail.\n")
     }
   }
   
@@ -34,8 +29,7 @@ class Jail (val numStations: Int) extends Actor {
    */
   override def postStop = {
     inmates.clear();
-    println("All incarcerated passengers have been transferred to permanent detention.")
-    println("")
+    println("All incarcerated passengers have been transferred to permanent detention.\n")
   }
 }
 

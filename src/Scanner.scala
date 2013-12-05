@@ -8,10 +8,9 @@ abstract class Scanner(private val securityStation : ActorRef) extends Actor {
 
   def randomInspection() : Boolean = {
     val i = new Random
-    if(i.nextDouble() <= 0.20) {
+    if(i.nextDouble() <= 0.20)
       false
-    } else {
+    else
       true
-    }
   }
 }

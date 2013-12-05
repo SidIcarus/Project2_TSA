@@ -1,5 +1,6 @@
 package src
 
-class PassengerRequest {
-
-}
+/**
+ * Represents when the bodyScanner wants another 
+ */
+class PassengerRequest {}

@@ -1,8 +1,6 @@
 package src
 
 /**
- * represents a baggage
+ * Represents a Passengers baggage
  */
-class Baggage {
-
-}
+class Baggage {}

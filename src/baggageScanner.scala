@@ -5,9 +5,7 @@ import akka.actor.ActorRef
 /**
  * Checks the bags of each passenger and makes sure it is clear.
  **/
-
 class baggageScanner(private val securityStation : ActorRef) extends Scanner(securityStation) {
-
   def receive() = {
     case sendBag : sendBaggage => {
       val passedInspection : Boolean = randomInspection()
@@ -16,7 +14,6 @@ class baggageScanner(private val securityStation : ActorRef) extends Scanner(sec
       
       self.channel ! new PassengerRequest()
       println("BodyScanner sends a request to LineQueue\n")
-      
     }
   }
 }
