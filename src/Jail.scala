@@ -19,7 +19,7 @@ class Jail (val numStations: Int) extends Actor {
   def receive = {
     case passenger : sendPassenger => {
       inmates.add(passenger.passenger)
-      println("Passenger " +passenger.passenger.num+ " is incarcerated and has entered the jail.\n")
+      println("Passenger " +passenger.passenger.num+ " is incarcerated and has entered the jail. The jail now holds " + inmates.size() + " people.\n")
     }
   }
   
