@@ -47,8 +47,9 @@ object Driver extends App{
 		for (i <- 1 to numPass){
 		  documentChecker ! new sendPassenger(new Passenger(new Baggage(), i))
 		}
-	}
+	
   
 	registry.shutdownAll()
 	println("The system is turning off")
+	}
 }
