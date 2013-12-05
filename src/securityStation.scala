@@ -20,6 +20,7 @@ class securityStation(val jail : ActorRef) extends Actor {
    */
   def receive = {
   	case reportPassenger : reportPassenger => {
+  	  println("\tThe report for passengers " +reportPassenger.passenger.num+ " has been completed")
   	  passReport = 1;
   		if (bagReport == 1){
 	  	  if (!reportPassenger.inspection){
@@ -31,6 +32,7 @@ class securityStation(val jail : ActorRef) extends Actor {
   	}
   	
   	case reportBaggage : reportBaggage => {
+	  println("\tThe report for passengers " +reportBaggage.passenger.num+ "s' baggage has been completed")
   	  bagReport = 1;
   		if (passReport == 1){
 	  	  if (!reportBaggage.inspection){
