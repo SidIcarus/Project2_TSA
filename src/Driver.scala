@@ -10,7 +10,7 @@ object Driver extends App{
 	override def main(args: Array[String]){
 		//sets up the number of lines and number of passengers with defaults
 		var numLines = 5
-		var numPass = 25
+		var numPass = 10
 		
 		//counter for for loops
 		val i = 0
