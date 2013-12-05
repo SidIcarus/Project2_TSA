@@ -24,6 +24,7 @@ class Jail (val numStations: Int) extends Actor {
     case passenger : sendPassenger => {
       inmates.add(passenger.passenger)
       println("Passenger is incarcerated and has entered the jail.")
+      println("")
     }
   }
   
@@ -34,6 +35,7 @@ class Jail (val numStations: Int) extends Actor {
   override def postStop = {
     inmates.clear();
     println("All incarcerated passengers have been transferred to permanent detention.")
+    println("")
   }
 }
 

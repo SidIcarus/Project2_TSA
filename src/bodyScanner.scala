@@ -14,10 +14,12 @@ class bodyScanner(private val securityStation : ActorRef) extends Scanner(securi
       val passedInspection : Boolean = randomInspection()
       securityStation ! new Report(sendPass.passenger, passedInspection)
       println("BodyScanner sends a report to SecurityStation")
+      println("")
     }
     
     case start : Start => {
       println("BodyScanner is starting.")
+      println("")
     }
     
   }

@@ -13,10 +13,12 @@ class baggageScanner(private val securityStation : ActorRef) extends Scanner(sec
       val passedInspection : Boolean = randomInspection()
       securityStation ! new Report(sendBag.passenger, passedInspection)
       println("BaggageScanner sends a report to SecurityStation")
+      println("")
     }
     
     case start : Start => {
             println("BaggageScanner is starting.")
+            println("")
 
     }
     

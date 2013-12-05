@@ -26,6 +26,7 @@ class securityStation(val jail : ActorRef) extends Actor {
    */
   def printReceive(msgType : String) {
     println("SecurityStation receives " + msgType + " message.")
+    println("")
   }
   
   /**
@@ -36,6 +37,7 @@ class securityStation(val jail : ActorRef) extends Actor {
    */
   def printSend(msgType : String, recipient : String) {
     println("SecurityStation sends " + msgType + " message to " + recipient + ".")
+    println("")
   }
   
 }

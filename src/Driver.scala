@@ -22,6 +22,7 @@ object Driver extends App{
 			numPass = args(1).toInt
 		}
 		
+		println("System is starting up")
 		//starts the jail actor
 		val jail = actorOf(new Jail(numLines)).start()
 		println("Jail is up and running.")
@@ -40,6 +41,7 @@ object Driver extends App{
 		val documentChecker = actorOf(new documentChecker(List.fromArray(lineList))).start
 		println("Document Check is up and running.")
 		println("Passengers are now being sent through")
+		println("")
 		
 		//sends passenger through the document Checker
 		for (i <- 1 to numPass){

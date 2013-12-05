@@ -50,10 +50,12 @@ class lineQueue(private val bodyScanner : ActorRef, private val baggageScanner :
 
   def printSend(msgType : String, messageTo : String) {
     println("Queue sends " + msgType + " message to " + messageTo + "." )
+    println("")
   }
   
   def printReceive(msgType : String) {
     println("Queue receives " + msgType + " message.")
+    println("")
   }
   
 }

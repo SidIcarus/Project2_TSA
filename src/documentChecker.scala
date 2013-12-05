@@ -18,7 +18,8 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
 
   def receive = {
     case passenger : sendPassenger => {
-      println("documentChecker receives a sendPassenger message")
+      println("documentChecker receives a sendPassenger message from the Driver")
+      println("")
       
       if (checkDocument()){
         addToLine(passenger)
@@ -26,6 +27,7 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
       }
       else{
         println("Passenger does not have the proper documentation and is turned away")
+        println("")
       }
     }
   }
@@ -58,7 +60,8 @@ class documentChecker(val lineList : List[ActorRef]) extends Actor{
 	 
 	  
 	  lineList(lineNum) ! new sendPassenger(passenger.passenger)
-	  println("Sending passenger to line " + lineNum + ".")
+	  println("documentChecker is Sending passenger to line " + lineNum + ".")
+	  println("")
     
 	  lineNum+= 1
 	  
