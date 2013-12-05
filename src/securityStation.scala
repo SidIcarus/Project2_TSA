@@ -13,18 +13,32 @@ import akka.actor.ActorRef
 class securityStation(val jail : ActorRef) extends Actor {
   
   // to see if the report pair is matching
-  var passReport : Boolean = false
-  var pass
+  var passReport : Int = 0
+  var bagReport : Int = 0
   /**
    * Upon receiving a report, it checks whether the inspection passed or not. If it didn't, it sends that passenger to jail.
    */
   def receive = {
-  	case reportPassenger : reportPassenger=>{
-  	  if (!reportPassenger.inspection){
-  	     println("Passenger " + reportPassenger.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
-  	     jail ! new sendPassenger(reportPassenger.passenger)
-  	  }else
-  	    println("Passenger " + reportPassenger.passenger.num + " goes to heaven")
+  	case reportPassenger : reportPassenger => {
+  	  passReport = 1;
+  		if (bagReport == 1){
+	  	  if (!reportPassenger.inspection){
+	  	     println("Passenger " + reportPassenger.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
+	  	     jail ! new sendPassenger(reportPassenger.passenger)
+	  	  }else
+	  	    println("Passenger " + reportPassenger.passenger.num + " goes to heaven")
+  		}
+  	}
+  	
+  	case reportBaggage : reportBaggage => {
+  	  bagReport = 1;
+  		if (passReport == 1){
+	  	  if (!reportBaggage.inspection){
+	  	     println("Passenger " + reportBaggage.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
+	  	     jail ! new sendPassenger(reportBaggage.passenger)
+	  	  }else
+	  	    println("Passenger " + reportBaggage.passenger.num + " goes to heaven")
+  		}
   	}
   }
 }
