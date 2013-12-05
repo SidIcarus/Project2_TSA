@@ -16,7 +16,16 @@ class securityStation(val jail : ActorRef) extends Actor {
    * @override
    */
   def receive = {
-  	case report : Report=>{}
+  	case report : Report=>{
+  	  
+  	  if (!report.inspection){
+  	    
+  	     jail ! new sendPassenger(report.passenger)
+  	     println("Passenger " + report.passenger.num + " has failed the scan inspection, and is being sent to jail.\n")
+  	  }
+  	}
+  	
+  	
   }
   
   /**
